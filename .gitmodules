@@ -1,0 +1,3 @@
+[submodule "circular_buffer_c"]
+	path = circular_buffer_c
+	url = https://github.com/TamaGo-HQ/circular_buffer_c
