@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include"circular_buffer.h"
+#include"bit_ops.h"
 #include<stdbool.h>
 
 /* ------------------- Error Types ------------------- */
@@ -136,8 +137,8 @@ typedef enum {
 
 /* ------------------- Control Register 2 (CR2) Stop Bits ------------------- */
 typedef enum {
-    CR2_STOP_1_BIT = 0x00,  // 1 stop bit
-    CR2_STOP_2_BIT = 0x20   // 2 stop bits (bits 13:12 = 10)
+    CR2_STOP_1_BIT = 0x00,  // 1 stop bit (bits 1:0 = 00)
+    CR2_STOP_2_BIT = 0x02   // 2 stop bits (bits 1:0 = 10, so bit 1 set)
 } UART_CR2_StopBits_t;
 
 #endif
