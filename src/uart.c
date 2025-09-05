@@ -18,10 +18,20 @@ UART_Error_t UART_Init(UART_Handle_t* huart, UART_Config_t* config){
     }
 
     huart->rx_buffer = cb_create(BUFFER_SIZE, sizeof(uint8_t));
-    if (huart->tx_buffer == NULL){
+    if (huart->rx_buffer == NULL){
         cb_destroy(huart->tx_buffer);
         return UART_ERROR_BUFFER_CREATE;
     }
+
+    // Initialize registers to hardware reset state
+    huart->registers.DR = 0x00;
+    // SR: Set TXE bit (ready to transmit)
+    huart->registers.SR = SET_BIT(0x00, SR_TXE_BIT);
+    // CR1: All disabled after reset
+    huart->registers.CR1 = 0x00;
+    // CR2: Configure stop bits 
+    huart->registers.CR2 = (config->stop_bits == UART_STOP_2_BITS) ? CR2_STOP_2_BIT : CR2_STOP_1_BIT;
+
 
     huart->tx_interrupt_enabled = false;
     huart->rx_interrupt_enabled = false;
