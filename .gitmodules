@@ -1,3 +1,6 @@
 [submodule "circular_buffer_c"]
 	path = circular_buffer_c
 	url = https://github.com/TamaGo-HQ/circular_buffer_c
+[submodule "bit_manip"]
+	path = bit_manip
+	url = https://github.com/TamaGo-HQ/bitmanip_h
