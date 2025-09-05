@@ -2,9 +2,9 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -g
 
-TARGET = test_uart
+TARGET = test_uart circular_buffer
 
-SRC = tests/test_uart.c 
+SRC = tests/test_uart.c
 
 OBJ = $(SRC:.c=.o)
 
